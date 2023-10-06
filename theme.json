@@ -1,0 +1,19 @@
+{
+    "#play_button":
+    {
+        "font":
+         {
+             "size": "32"
+         }
+    },
+    "#fps_label":
+    {
+        "colours":
+        {
+            "normal_text": "#111"
+        },
+        "font":{
+            "size": "24"
+        }
+    }
+}
