@@ -1,7 +1,8 @@
-import pygame, pygame_gui, time
+import pygame, pygame_gui, threading
 from menu.menu import Menu
 from menu.impl.main_menu import MainMenu
 from menu.impl.game_menu import GameMenu
+from Server import Server
 
 ###################################################################################
 # Konstanten
@@ -21,6 +22,8 @@ class Game:
         self.manager = pygame_gui.UIManager((WIDTH, HEIGHT), 'game-mp/theme.json', True)
         self.menu: Menu = MainMenu(self.manager, self.screen, pygame)
         self.state = "MENU"
+        self.server_thread = threading.Thread(target=Server, name="server_start")
+
 
     def tick(self):
         self.events()
@@ -43,6 +46,9 @@ class Game:
                     if event.ui_element == MainMenu.get_play_ui_button(self.menu):
                         self.menu = GameMenu(self.manager, self.screen, pygame, self.clock)
                         self.state = "GAME"
+                    elif event.ui_element == MainMenu.get_start_server_ui_button(self.menu):
+                        self.server_thread.start()
+
                         
                         
                     

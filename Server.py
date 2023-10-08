@@ -1,9 +1,10 @@
 import socket
-import pickle
 
 class Server():
     def __init__(self):
-        pass
+        self.ip = socket.getfqdn()
+        self.port = "1201"
+        print(f'server started: {self.ip}:{self.port}')    
 
     def accept_clients(self):
         pass
@@ -14,4 +15,5 @@ class Server():
     def send_data(self):
         pass
 
-server = Server()
+    def start(self):
+        self.root.mainloop()

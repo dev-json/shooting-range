@@ -1,7 +1,10 @@
-from pygame_gui import UIManager
+import threading
+from pygame_gui import UIManager, UI_BUTTON_PRESSED
 from pygame_gui.elements import *
 from pygame import Rect, Surface
 from menu.menu import Menu
+
+from Server import Server
 
 import pygame
 
@@ -60,9 +63,13 @@ class MainMenu(Menu):
     def draw(self):
         pass
 
-    def events(self, event: pygame.Event):
+    def events(self, event):
         pass
 
     @staticmethod
     def get_play_ui_button(self) -> UIButton:
         return self.play_button
+    
+    @staticmethod
+    def get_start_server_ui_button(self) -> UIButton:
+        return self.start_server_button
