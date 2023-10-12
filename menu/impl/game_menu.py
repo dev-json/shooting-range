@@ -91,7 +91,7 @@ class GameMenu(Menu):
                     self.currentTime = 1
 
                     if len(self.ducks) == 0:
-                        pass #todo do winniing here
+                        pass
 
 
     def shoot(self):
