@@ -15,5 +15,16 @@
         "font":{
             "size": "24"
         }
+    },
+    "#won_label":
+    {
+        "colours":
+        {
+            "normal_text": "#ffffff"
+        },
+        "font":{
+            "size": "24"
+        }
     }
+
 }

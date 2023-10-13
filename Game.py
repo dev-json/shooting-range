@@ -14,6 +14,7 @@ TITLE = "Shooting Range"
 FPS = 60
    
 class Game:
+    state = "MENU"
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,7 +22,7 @@ class Game:
         self.running = True
         self.manager = pygame_gui.UIManager((WIDTH, HEIGHT), 'game-mp/theme.json', True)
         self.menu: Menu = MainMenu(self.manager, self.screen, pygame)
-        self.state = "MENU"
+        Game.state = "MENU"
         self.server_thread = threading.Thread(target=Server, name="server_start")
 
 
@@ -42,10 +43,10 @@ class Game:
                 self.running = False
             self.manager.process_events(event)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if self.state == "MENU":
+                if Game.state == "MENU":
                     if event.ui_element == MainMenu.get_play_ui_button(self.menu):
-                        self.menu = GameMenu(self.manager, self.screen, pygame, self.clock)
-                        self.state = "GAME"
+                        self.menu = GameMenu(self.manager, self.screen, pygame, self.clock, self)
+                        Game.state = "GAME"
                     elif event.ui_element == MainMenu.get_start_server_ui_button(self.menu):
                         self.server_thread.start()
 
